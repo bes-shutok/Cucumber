@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gmail.dmitrievandreyvitalyevich</groupId>
+    <artifactId>cucumber_learning</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>test-new-features</module>
+    </modules>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-core &ndash;&gt;
+                <dependency>
+                    <groupId>info.cukes</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                    <version>1.2.5</version>
+                </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-spring &ndash;&gt;
+                <dependency>
+                    <groupId>info.cukes</groupId>
+                    <artifactId>cucumber-spring</artifactId>
+                    <version>1.2.5</version>
+                    <scope>test</scope>
+                </dependency>-->
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-jvm-deps &ndash;&gt;
+                <dependency>
+                    <groupId>info.cukes</groupId>
+                    <artifactId>cucumber-jvm-deps</artifactId>
+                    <version>1.0.5</version>
+                    <scope>provided</scope>
+                </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>2.12.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <!--    <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.14.3</version>
+                <scope>test</scope>
+            </dependency>-->
+
+    </dependencies>
+
+
+
+</project>

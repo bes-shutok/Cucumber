@@ -1,0 +1,26 @@
+package first_taste;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.SnippetType;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+@CucumberOptions(
+        plugin={"pretty"},
+        //plugin={"progress"},
+        // dryRun=true,
+        snippets= SnippetType.CAMELCASE,
+        features={"src/test/resources/features"},
+        glue={"first_taste.stepdefs"}
+        //,tags={"~@Ignore"}
+        )
+@Test
+public class TestRunner extends AbstractTestNGCucumberTests {
+
+
+    public void testRunner() {
+        Assert.assertEquals(true, true);
+
+    }
+}
