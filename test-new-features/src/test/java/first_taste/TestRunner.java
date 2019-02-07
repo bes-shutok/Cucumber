@@ -7,8 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        plugin={"pretty"},
-        //plugin={"progress"},
+        //plugin={"pretty"},
+        plugin={"progress"},
         // dryRun=true,
         snippets= SnippetType.CAMELCASE,
         features={"src/test/resources/features"},
@@ -20,7 +20,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 
     public void testRunner() {
-        Assert.assertEquals(true, true);
+        Assert.assertEquals(1, 1);
 
     }
 }
