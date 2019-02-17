@@ -1,12 +1,8 @@
 package first_taste.stepdefs;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import cucumber.api.java.en.*;
 import first_taste.implementation.Checkout;
-
 import java.util.HashMap;
-
 import static org.testng.Assert.assertEquals;
 
 public class CheckoutSteps {

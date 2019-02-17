@@ -1,8 +1,6 @@
 package first_taste.stepdefs;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import cucumber.api.java.en.*;
 
 import java.util.HashMap;
 
@@ -12,7 +10,7 @@ public class FlightSteps {
     @Given("^the flight ([A-Z]+\\d+) is leaving today")
     public void theFlightIsLeavingToday(String ticketNumber){
         ticket=ticketNumber;
-        System.out.println("Ticket #: "+ticket);
+        // System.out.println("Ticket #: "+ticket);
     }
 
     @When("^mockWhen$")

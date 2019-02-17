@@ -7,12 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        //plugin={"pretty"},
-        plugin={"progress"},
+        plugin={"pretty"},
+        // plugin={"progress"},
         // dryRun=true,
         snippets= SnippetType.CAMELCASE,
-        features={"src/test/resources/features"},
-        glue={"first_taste.stepdefs"}
+        features={"src/test/resources/tic_tac_toe"},
+        glue={"tic_tac_toe"}
         //,tags={"~@Ignore"}
         )
 @Test
