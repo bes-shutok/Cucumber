@@ -9,18 +9,17 @@ public class TransferFunds {
     @Given("^I have deposited \\$(\\d+) in my (\\w+) Account$")
     public void iHaveDeposited$InMyAccount(int amount, String accountType) {
         // Write code here that turns the phrase above into concrete actions
-        // System.out.println("\nDeposited $" + amount + " to " + accountType + " Account");
+        System.out.println("\nI deposited $" + amount + " to " + accountType + " Account");
         accounts.put(accountType,amount);
         // System.out.println(accounts);
     }
 
-    @When("^I transfer \\$(\\d+) from my (\\w+) Account into my (\\w+) Account$")
-    public void iTransfer$FromMySavingsAccountIntoMyCheckingAccount(int amount, String debitedAccount, String receivingAccount){
-        // Write code here that turns the phrase above into concrete actions
-        // System.out.println("\nTransfer $" + amount + " from " + debitedAccount + " Account to " + receivingAccount + " Account");
+    @When("^I enter \\$(\\d+) to tranfer from my (\\w+) Account into my (\\w+) Account$")
+    public void iEnter$ToTranferFromMySavingsAccountIntoMyCheckingAccount(int amount, String debitedAccount, String receivingAccount){
+        System.out.println("\nI tranfer $" + amount + " from my " + debitedAccount + " Account to my " + receivingAccount + " Account");
         accounts.put(debitedAccount,accounts.get(debitedAccount)-amount);
         accounts.put(receivingAccount,accounts.get(receivingAccount)+amount);
-        // System.out.println(accounts);
+        System.out.println(accounts);
     }
 
     @Then("^the balance of the (\\w+) Account should be \\$(\\d+)$")
