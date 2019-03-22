@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rest_web_services</artifactId>
+
+    <!-- Base Jersey version -->
+    <properties>
+        <jetty.version>9.2.0.M0</jetty.version>
+        <jersey.version>1.19.4</jersey.version>
+    </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
         <dependency>
@@ -17,40 +23,67 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jetty.version}</version>
         </dependency>
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server &ndash;&gt;
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
+            <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>${jersey.version}</version>
-        </dependency>-->
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-servlet -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+    </dependencies>
 
-        <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet -->
+
+
+
+    <!-- Latest Jersey version -->
+ <!--   <properties>
+        <jetty.version>9.4.15.v20190215</jetty.version>
+        <jersey.version>2.28</jersey.version>
+    </properties>
+
+    <dependencies>
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp &ndash;&gt;
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet &ndash;&gt;
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
             <version>${jersey.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client &ndash;&gt;
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
             <version>${jersey.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common &ndash;&gt;
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-common</artifactId>
             <version>${jersey.version}</version>
         </dependency>
-
-
-    </dependencies>
-    <properties>
-        <jetty.version>9.4.15.v20190215</jetty.version>
-        <jersey.version>2.28</jersey.version>
-    </properties>
+    </dependencies>-->
 
 
 </project>

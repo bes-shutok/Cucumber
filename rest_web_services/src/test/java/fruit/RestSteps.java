@@ -1,17 +1,34 @@
 package fruit;
 
-import cucumber.api.DataTable;
+import com.sun.jersey.api.client.*;
+
 import cucumber.api.PendingException;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import cucumber.api.java.en.*;
+
+import hooks.ServerHooks;
+
+import java.net.HttpURLConnection;
+
+import org.testng.Assert;
 
 public class RestSteps {
+    private ClientResponse response;
 
         @When("^the client requests GET /fruits$")
         public void theClientRequestsGETFruits() throws Throwable {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
+            try {
+                Client client = Client.create();
+                WebResource webResource = client
+                        .resource("http://localhost:" + ServerHooks.PORT + "/fruits");
+                response = webResource.type("application/json")
+                        .get(ClientResponse.class);
+            } catch (RuntimeException r) {
+                throw r;
+            } catch (Exception e) {
+                System.out.println("Exception caught");
+                e.printStackTrace();
+            }
+            Assert.assertEquals(HttpURLConnection.HTTP_OK, response.getStatus(), "Did not receive OK response: ");
         }
 
         @Then("^the response should be JSON:$")

@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        // plugin={"pretty", "html:out"},
-        plugin={"progress"},
+        plugin={"pretty", "html:out"},
+        // plugin={"progress"},
         // dryRun=true,
         snippets= SnippetType.CAMELCASE,
         // features={"src/test/resources/tic_tac_toe"},
