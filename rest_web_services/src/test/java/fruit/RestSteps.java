@@ -5,6 +5,7 @@ import com.sun.jersey.api.client.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
 
+import gherkin.deps.com.google.gson.JsonParser;
 import hooks.ServerHooks;
 
 import java.net.HttpURLConnection;
@@ -33,7 +34,8 @@ public class RestSteps {
 
         @Then("^the response should be JSON:$")
         public void theResponseShouldBeJSON(String jsonExpected) throws Throwable {
-            Assert.assertEquals(response.getEntity(String.class),jsonExpected, "Incorrect JSON representation");
+            JsonParser parser = new JsonParser();
+            Assert.assertEquals(parser.parse(response.getEntity(String.class)),parser.parse(jsonExpected), "Incorrect JSON representation");
         }
     }
 
