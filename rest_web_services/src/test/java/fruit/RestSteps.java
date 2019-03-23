@@ -32,9 +32,8 @@ public class RestSteps {
         }
 
         @Then("^the response should be JSON:$")
-        public void theResponseShouldBeJSON(String arg1) throws Throwable {
-            // Write code here that turns the phrase above into concrete actions
-            throw new PendingException();
+        public void theResponseShouldBeJSON(String jsonExpected) throws Throwable {
+            Assert.assertEquals(response.getEntity(String.class),jsonExpected, "Incorrect JSON representation");
         }
     }
 
