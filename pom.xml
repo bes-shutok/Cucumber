@@ -11,6 +11,7 @@
     <modules>
         <module>test-new-features</module>
         <module>rest_web_services</module>
+        <module>nicebank</module>
     </modules>
 
     <dependencies>
