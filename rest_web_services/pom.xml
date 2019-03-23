@@ -14,7 +14,8 @@
     <!-- Base Jersey version -->
     <properties>
         <jetty.version>9.2.0.M0</jetty.version>
-        <jersey.version>1.19.4</jersey.version>
+        <!--<jersey.version>1.19.4</jersey.version>-->
+        <jersey.version>1.8</jersey.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->

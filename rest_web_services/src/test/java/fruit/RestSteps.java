@@ -9,7 +9,7 @@ import hooks.ServerHooks;
 
 import java.net.HttpURLConnection;
 
-import org.testng.Assert;
+import org.testng.*;
 
 public class RestSteps {
     private ClientResponse response;
@@ -28,7 +28,7 @@ public class RestSteps {
                 System.out.println("Exception caught");
                 e.printStackTrace();
             }
-            Assert.assertEquals(HttpURLConnection.HTTP_OK, response.getStatus(), "Did not receive OK response: ");
+            Assert.assertEquals(response.getStatus(), HttpURLConnection.HTTP_OK,  "Did not receive OK response: ");
         }
 
         @Then("^the response should be JSON:$")
