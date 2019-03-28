@@ -9,14 +9,19 @@ import transforms.MoneyConverter;
 
 public class Steps {
     class Teller  {
+        private CashSlot cashSlot;
+        public Teller(CashSlot cashSlot) {this.cashSlot=cashSlot;}
         public void withdrawFrom(Account account, Money amount) {
-            account.withdraw(amount);
+            // account.withdraw(amount);
+            cashSlot.dispense(amount);
         }
     }
     class CashSlot {
-        public Money getContents() {
-            return new Money(0,0);
-        }
+        private Money contents;
+
+        public Money getContents() {return contents;}
+        // public Money getContents() {return new Money(0,0);}
+        public void dispense(Money amount) {contents=amount;}
     }
     class Account {
         private Money balance = new Money();
@@ -27,6 +32,12 @@ public class Steps {
     class KnowsTheDomain {
         private Account myAccount;
         private CashSlot cashSlot;
+        private Teller teller;
+
+        public Teller getTeller() {
+            if (teller == null) {teller = new Teller(helper.getCashSlot());}
+            return teller;
+        }
 
         public Account getMyAccount() {
             if (myAccount == null) {myAccount = new Account();}
@@ -51,8 +62,7 @@ public class Steps {
 
     @When("^I withdraw (\\$\\d+\\.\\d+)$")
     public void iWithdraw$(@Transform(MoneyConverter.class) Money amount) throws Throwable {
-        Teller teller = new Teller();
-        teller.withdrawFrom(helper.getMyAccount(), amount);
+        helper.getTeller().withdrawFrom(helper.getMyAccount(), amount);
     }
 
     @Then("^(\\$\\d+\\.\\d+) should be dispensed$")
