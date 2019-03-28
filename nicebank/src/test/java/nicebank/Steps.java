@@ -1,9 +1,11 @@
 package nicebank;
 
 import cucumber.api.PendingException;
+import cucumber.api.Transform;
 import cucumber.api.java.en.*;
 import nicebank.Money;
 import org.testng.Assert;
+import transforms.MoneyConverter;
 
 public class Steps {
     class Account {
@@ -11,10 +13,10 @@ public class Steps {
         public void deposit(Money amount) {balance=balance.add(amount);}
         public Money getBallance(){return balance;}
     }
-    @Given("^I have deposited \\$(\\d+)\\.(\\d+) in my account$")
-    public void iHaveDeposited$InMyAccount(int dollars, int cents) throws Throwable {
+    @Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
+    public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) Money amount) throws Throwable {
         Account myAccount = new Account();
-        Money amount = new Money(dollars, cents);
+        // Money amount = new Money(dollars, cents);
         myAccount.deposit(amount);
         Assert.assertEquals(myAccount.getBallance(),amount,"Incorrect account balance - ");
     }
