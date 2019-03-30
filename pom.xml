@@ -13,14 +13,39 @@
         <module>rest_web_services</module>
         <module>nicebank</module>
     </modules>
-
+    <properties>
+        <cucumber.version>2.4.0</cucumber.version>
+        <picocontainer.version>2.14.2</picocontainer.version>
+    </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>1.2.5</version>
+            <version>${cucumber.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.picocontainer</groupId>
+            <artifactId>picocontainer</artifactId>
+            <version>${picocontainer.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-core &ndash;&gt;
                 <dependency>
@@ -28,13 +53,6 @@
                     <artifactId>cucumber-core</artifactId>
                     <version>1.2.5</version>
                 </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>1.2.5</version>
-        </dependency>
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-spring &ndash;&gt;
                 <dependency>
@@ -53,12 +71,12 @@
                 </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>gherkin</artifactId>
-            <version>2.12.2</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--        <dependency>
+                    <groupId>info.cukes</groupId>
+                    <artifactId>gherkin</artifactId>
+                    <version>2.12.2</version>
+                    <scope>provided</scope>
+                </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <!--    <dependency>
                 <groupId>org.testng</groupId>
@@ -68,15 +86,11 @@
             </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-<!--
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.5</version>
-        </dependency>
--->
 
     </dependencies>
+
+
+
     <build>
         <plugins>
             <plugin>
