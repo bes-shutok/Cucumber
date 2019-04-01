@@ -1,7 +1,7 @@
 package nicebank;
 
 import cucumber.api.Transform;
-import cucumber.api.java.en.Given;
+import cucumber.api.java.en.*;
 import org.testng.*;
 import support.KnowsTheDomain;
 import transforms.MoneyConverter;
@@ -14,6 +14,10 @@ public class AccountSteps {
     @Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
     public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) Money amount) throws Throwable {
         helper.getMyAccount().deposit(amount);
+        Assert.assertEquals(helper.getMyAccount().getBallance(),amount,"Incorrect account balance - ");
+    }
+    @Then("^I should have left with (\\$\\d+\\.\\d+) in my account$")
+    public void iShouldHaveLeftWith$InMyAccount(@Transform(MoneyConverter.class) Money amount) {
         Assert.assertEquals(helper.getMyAccount().getBallance(),amount,"Incorrect account balance - ");
     }
 }

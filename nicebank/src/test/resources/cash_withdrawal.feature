@@ -3,3 +3,4 @@ Feature: Cash Withdrawal
     Given I have deposited $100.00 in my account
     When I withdraw $20.00
     Then $20.00 should be dispensed
+    And I should have left with $80.00 in my account
