@@ -9,6 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>nicebank</artifactId>
+    <properties>
+        <jetty.version>9.4.15.v20190215</jetty.version>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+    </dependencies>
 <!--    <properties>
         <cucumber.version>1.2.5</cucumber.version>
         <picocontainer.version>2.14.2</picocontainer.version>
