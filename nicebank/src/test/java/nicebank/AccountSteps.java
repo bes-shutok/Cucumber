@@ -11,10 +11,9 @@ public class AccountSteps {
     public AccountSteps(KnowsTheDomain helper) {
         this.helper = helper;
     }
-    @Given("^I have deposited (\\$\\d+\\.\\d+) in my account$")
+    @Given("^my account has been credited with (\\$\\d+\\.\\d+)$")
     public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) Money amount) throws Throwable {
-        helper.getMyAccount().deposit(amount);
-        Assert.assertEquals(helper.getMyAccount().getBallance(),amount,"Incorrect account balance - ");
+        helper.getMyAccount().credit(amount);
     }
     @Then("^I should have left with (\\$\\d+\\.\\d+) in my account$")
     public void iShouldHaveLeftWith$InMyAccount(@Transform(MoneyConverter.class) Money amount) {
