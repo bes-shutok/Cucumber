@@ -11,6 +11,7 @@
     <artifactId>nicebank</artifactId>
     <properties>
         <jetty.version>9.4.15.v20190215</jetty.version>
+        <selenium.version>3.141.59</selenium.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
@@ -19,31 +20,38 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jetty.version}</version>
         </dependency>
-    </dependencies>
-<!--    <properties>
-        <cucumber.version>1.2.5</cucumber.version>
-        <picocontainer.version>2.14.2</picocontainer.version>
-    </properties>
-    <dependencies>
-        &lt;!&ndash; https://mvnrepository.com/artifact/io.cucumber/cucumber-java &ndash;&gt;
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-testng &ndash;&gt;
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.picocontainer</groupId>
-            <artifactId>picocontainer</artifactId>
-            <version>${picocontainer.version}</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
         </dependency>
 
-    </dependencies>-->
+    </dependencies>
+    <!--    <properties>
+            <cucumber.version>1.2.5</cucumber.version>
+            <picocontainer.version>2.14.2</picocontainer.version>
+        </properties>
+        <dependencies>
+            &lt;!&ndash; https://mvnrepository.com/artifact/io.cucumber/cucumber-java &ndash;&gt;
+            <dependency>
+                <groupId>info.cukes</groupId>
+                <artifactId>cucumber-java</artifactId>
+                <version>${cucumber.version}</version>
+            </dependency>
+            &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-testng &ndash;&gt;
+            <dependency>
+                <groupId>info.cukes</groupId>
+                <artifactId>cucumber-testng</artifactId>
+                <version>${cucumber.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.picocontainer</groupId>
+                <artifactId>picocontainer</artifactId>
+                <version>${picocontainer.version}</version>
+            </dependency>
+
+        </dependencies>-->
 
 
 </project>
