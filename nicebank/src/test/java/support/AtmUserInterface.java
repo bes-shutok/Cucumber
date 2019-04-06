@@ -5,8 +5,8 @@ import nicebank.Teller;
 import nicebank.Money;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import static hooks.ServerHooks.PORT;
 
 class AtmUserInterface implements Teller {
     private final EventFiringWebDriver webDriver;
@@ -17,7 +17,7 @@ class AtmUserInterface implements Teller {
     }
     public void withdrawFrom(Account account, Money amount) {
         try {
-            webDriver.get("http://localhost:9988");
+            webDriver.get("http://localhost:" + PORT);
             webDriver.findElement(By.id("Amount"))
                     .sendKeys(amount.toString());
             webDriver.findElement(By.id("Withdraw")).click();
