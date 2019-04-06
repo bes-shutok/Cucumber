@@ -6,12 +6,13 @@ import support.KnowsTheDomain;
 import transforms.MoneyConverter;
 
 public class TellerSteps {
-    KnowsTheDomain helper;
+    private KnowsTheDomain helper;
     public TellerSteps(KnowsTheDomain helper) {
         this.helper = helper;
     }
+
     @When("^I withdraw (\\$\\d+\\.\\d+)$")
-    public void iWithdraw$(@Transform(MoneyConverter.class) Money amount) throws Throwable {
+    public void iWithdraw$(@Transform(MoneyConverter.class) Money amount) {
         helper.getTeller().withdrawFrom(helper.getMyAccount(), amount);
     }
 }

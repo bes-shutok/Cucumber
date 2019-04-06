@@ -7,12 +7,13 @@ import support.KnowsTheDomain;
 import transforms.MoneyConverter;
 
 public class AccountSteps {
-    KnowsTheDomain helper;
+    private KnowsTheDomain helper;
     public AccountSteps(KnowsTheDomain helper) {
         this.helper = helper;
     }
+
     @Given("^my account has been credited with (\\$\\d+\\.\\d+)$")
-    public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) Money amount) throws Throwable {
+    public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) Money amount) {
         helper.getMyAccount().credit(amount);
     }
     @Then("^I should have left with (\\$\\d+\\.\\d+) in my account$")

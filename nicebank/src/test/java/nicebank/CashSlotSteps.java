@@ -7,12 +7,13 @@ import support.KnowsTheDomain;
 import transforms.MoneyConverter;
 
 public class CashSlotSteps {
-    KnowsTheDomain helper;
+    private KnowsTheDomain helper;
     public CashSlotSteps(KnowsTheDomain helper) {
         this.helper = helper;
     }
+
     @Then("^(\\$\\d+\\.\\d+) should be dispensed$")
-    public void $ShouldBeDispensed(@Transform(MoneyConverter.class) Money amount) throws Throwable {
+    public void $ShouldBeDispensed(@Transform(MoneyConverter.class) Money amount) {
         Assert.assertEquals(helper.getCashSlot().getContents(),amount,"Incorrect account balance - ");
     }
 }
