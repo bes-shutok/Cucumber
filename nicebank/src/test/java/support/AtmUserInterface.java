@@ -13,10 +13,16 @@ class AtmUserInterface implements Teller {
         this.webDriver = webDriver;
     }
     public void withdrawFrom(Account account, Money amount) {
-
             webDriver.get("http://localhost:" + PORT);
-            webDriver.findElement(By.id("amount"))
-                    .sendKeys(amount.toString());
+            if (amount.equals(new Money("10.00"))) {
+                webDriver.findElement(By.id("withdraw10")).click();
+                return;
+            }
+            if (amount.equals(new Money("20.00"))) {
+                webDriver.findElement(By.id("withdraw20")).click();
+                return;
+            }
+            webDriver.findElement(By.id("amount")).sendKeys(amount.toString());
             webDriver.findElement(By.id("withdraw")).click();
     }
 }
