@@ -8,7 +8,9 @@ import org.testng.annotations.Test;
         plugin={"pretty", "html:out"},
         // plugin={"progress"}, dryRun=true,
         snippets= SnippetType.CAMELCASE
-        //,features={"src/test/resources"}, glue={"fruit"}, tags={"~@Ignore"}
+        // , tags = {"@NewFeatures"}
+        //,features={"src/test/resources"}, glue={"fruit"}
+        // , tags={"~@Ignore"}
 )
 @Test
 public class TestRunnerNicebank extends AbstractTestNGCucumberTests {

@@ -83,4 +83,11 @@ public final class Money {
     public String toString() {
         return String.format("$%01d.%02d", this.dollars(), this.cents());
     }
+
+    public boolean lessThan(Money otherMoney) {
+        boolean less;
+        less = ((this.dollars() < otherMoney.dollars())
+                || ((this.dollars() == otherMoney.dollars()) && (this.cents() < otherMoney.cents())));
+        return less;
+    }
 }

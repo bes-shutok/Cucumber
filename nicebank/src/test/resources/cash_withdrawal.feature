@@ -1,3 +1,4 @@
+@SmokeTests @Ignore
 Feature: Cash Withdrawal
   Scenario Outline: Successful withdrawal from an account in credit
     Given my account has been credited with <Deposited Sum>
@@ -9,4 +10,3 @@ Feature: Cash Withdrawal
   | $100.00       | $20.00    |$80.00        |
   | $10.00        | $10.00    |$0.00         |
   | $50.00        | $30.00    |$20.00         |
-#  | $20.00        | $30.00    | -$10.00       |
