@@ -3,14 +3,15 @@ package nicebank;
 public class AutomatedTeller implements Teller {
     private CashSlot cashSlot;
     public AutomatedTeller(CashSlot cashSlot) {this.cashSlot=cashSlot;}
-    public void withdrawFrom(Account account, Money amount) {
+    public boolean withdrawFrom(Account account, Money amount) {
+        cashSlot.dispense(new Money("$0.00"));
         try {
             account.debit(amount);
-        } catch (Exception e) {
-            e.printStackTrace();
-            cashSlot.dispense(new Money("0.00"));
-            return;
+        } catch (NotEnoughMoney notEnoughMoney) {
+            // notEnoughMoney.printStackTrace();
+            return false;
         }
         cashSlot.dispense(amount);
+        return true;
     }
 }
