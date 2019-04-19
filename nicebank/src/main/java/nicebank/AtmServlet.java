@@ -19,6 +19,10 @@ public class AtmServlet extends HttpServlet
                         "<button type=\"submit\" id=\"withdraw\">Withdraw</button>" +
                         "</form>" +
                         "<form action=\"/withdraw\" method=\"post\">" +
+                        "<input type=\"hidden\" id=\"amount\" value=\"getBalance\" name=\"amount\">" +
+                        "<button type=\"submit\"id=\"displayBalance\">Display Balance</button>" +
+                        "</form>" +
+                        "<form action=\"/withdraw\" method=\"post\">" +
                         "<input type=\"hidden\" id=\"amount\" value=\"$10.00\" name=\"amount\">" +
                         "<button type=\"submit\"  id=\"withdraw10\">Withdraw $10</button>" +
                         "</form>" +

@@ -15,28 +15,42 @@ class WithdrawalServlet extends HttpServlet {
         this.account=account;
         this.cashSlot= cashSlot;
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean overdraw;
+        String amountString;
         Teller teller = new AutomatedTeller(cashSlot);
-        System.out.println("Request: " + request.toString());
-        this.amount = new Money(request.getParameter("amount"));
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);
+
+        amountString=request.getParameter("amount");
+
+
+        if (amountString !=null && amountString.equals("getBalance")) {response.getWriter().println(
+                "<html><head><title>ATM</title></head>" + "<body><header><h1>Your balance: " + account.getBallance() + "</h1>" +
+                    // for debugging purpose:
+                    // "<br>Request: " + request.toString() + "<br>Request parameters: " + request.getParameterMap().toString() +
+                 "</header></body></html>");
+        return;
+        }
+
+        this.amount = new Money(amountString);
+
         overdraw=!teller.withdrawFrom(account, amount);
         if (overdraw) {response.getWriter().println(
-                "<html><head><title>ATM</title></head>" + "<body>You have insufficient funds in your account! <br>" +
-                        "<br> Your account has " + account.getBallance() + " and you tried to withdraw " + amount +
+                "<html><head><title>ATM</title></head>" + "<body><header><h1>You have insufficient funds in your account!<br>" +
+                        "<br> Your account has " + account.getBallance() + " and you tried to withdraw " + amount + "</h1>" +
                         // for debugging purpose:
-                        //.append("<br>Request: " + request.toString()).append("<br>Request parameters: " + request.getParameterMap().toString())
-                        "</body>" + "</html>");
+                        // "<br>Request: " + request.toString() + "<br>Request parameters: " + request.getParameterMap().toString() +
+                        "</header></body></html>");
         return;
         }
 
         response.getWriter().println(
-                "<html><head><title>ATM</title></head>" + "<body>Please take your " + amount +
+                "<html><head><title>ATM</title></head>" + "<body><header><h1>Please take your " + amount + "</h1>" +
                         // for debugging purpose:
-                        //.append("<br>Request: " + request.toString()).append("<br>Request parameters: " + request.getParameterMap().toString())
-                        "</body>" + "</html>");
+                        // "<br>Request: " + request.toString() + "<br>Request parameters: " + request.getParameterMap().toString() +
+                        "</header></body></html>");
 
     }
 }

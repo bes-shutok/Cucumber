@@ -8,7 +8,6 @@ public class AutomatedTeller implements Teller {
         try {
             account.debit(amount);
         } catch (NotEnoughMoney notEnoughMoney) {
-            // notEnoughMoney.printStackTrace();
             return false;
         }
         cashSlot.dispense(amount);

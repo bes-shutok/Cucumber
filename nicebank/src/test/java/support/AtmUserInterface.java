@@ -1,14 +1,18 @@
 package support;
 
 import nicebank.Account;
-import nicebank.Teller;
 import nicebank.Money;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.Assert;
+
 import static hooks.ServerHooks.PORT;
 
-class AtmUserInterface implements Teller {
+class AtmUserInterface implements TellerWithState {
+
     private final EventFiringWebDriver webDriver;
+    private Status status= Status.WITHDRAW;
+
     AtmUserInterface(EventFiringWebDriver webDriver){
         this.webDriver = webDriver;
     }
@@ -25,5 +29,24 @@ class AtmUserInterface implements Teller {
             webDriver.findElement(By.id("amount")).sendKeys(amount.toString());
             webDriver.findElement(By.id("withdraw")).click();
             return true;
+    }
+
+    public void displayBalance() {
+        webDriver.get("http://localhost:" + PORT);
+        webDriver.findElement(By.id("displayBalance")).click();
+        status=Status.DISPLAY;
+    }
+
+    // Uses webDriver response from above methods. Should not be called before withdrawFrom() or displayBalance()
+    public Status checkState() {
+        Assert.assertNotNull(webDriver, "checkState() cannot be used before other methods");
+        // return status;
+        if (webDriver.getPageSource().contains("You have insufficient funds in your account!")) {
+            return Status.OVERDRAW;
+        }
+        if (webDriver.getPageSource().contains("Your balance: ")) {
+            return Status.DISPLAY;
+        }
+        return Status.WITHDRAW;
     }
 }

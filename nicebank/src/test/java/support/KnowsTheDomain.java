@@ -2,14 +2,13 @@ package support;
 
 import nicebank.Account;
 import nicebank.CashSlot;
-import nicebank.Teller;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class KnowsTheDomain {
     private Account myAccount;
     private CashSlot cashSlot;
-    private Teller teller;
+    private TellerWithState teller;
     private EventFiringWebDriver webDriver;
 
     public EventFiringWebDriver getWebDriver() {
@@ -21,7 +20,7 @@ public class KnowsTheDomain {
         return webDriver;
     }
 
-    public Teller getTeller() {
+    public TellerWithState getTeller() {
         if (teller == null) {teller = new AtmUserInterface(getWebDriver());}
         return teller;
     }
