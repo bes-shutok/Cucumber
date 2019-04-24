@@ -1,13 +1,18 @@
 package nicebank;
 
 public class Account {
-    private Money balance = new Money();
-    public void credit(Money amount) {balance=balance.add(amount);}
+    private TransactionQueue queue =  new TransactionQueue();
+
+    public void credit(Money amount) {
+       queue.write("+" + amount.toString());
+    }
     public void debit(Money amount) throws NotEnoughMoney {
-        if (balance.lessThan(amount)) {
+        if (getBallance().lessThan(amount)) {
             throw new NotEnoughMoney();
         }
-        balance=balance.minus(amount);
+        queue.write("-" + amount.toString());
     }
-    public Money getBallance(){return balance;}
+    public Money getBallance(){
+        return BalanceStore.getBalance();
+    }
 }
