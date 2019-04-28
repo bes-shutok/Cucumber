@@ -5,10 +5,10 @@ public class TransactionProcessor {
     public void process() {
         do {
             String message = queue.read();
-            try {
+/*            try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-            }
+            }*/
             if (message.length() > 0) {
                 Money balance = BalanceStore.getBalance();
                 Money transactionAmount = new Money(message);

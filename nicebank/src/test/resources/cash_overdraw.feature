@@ -1,4 +1,4 @@
-@SmokeTests @Ignore
+@Ignore @MarginalCase
 Feature: Prevent users from going overdrawn
   Scenario: User tries to withdraw more than their balance
     Given my account has been credited with $100.00

@@ -11,7 +11,6 @@ public class BalanceStore {
 
     public static void clear() {
         new File(BALANCE_FILE_PATH).delete();
-
         setBalance(new Money(0,0));
     }
 
@@ -31,7 +30,6 @@ public class BalanceStore {
     }
 
     public static void setBalance(Money newBalance){
-
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(BALANCE_FILE_PATH, "UTF-8");

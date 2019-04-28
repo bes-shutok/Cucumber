@@ -16,8 +16,12 @@ public class AccountSteps {
     public void iHaveDeposited$InMyAccount(@Transform(MoneyConverter.class) Money amount) {
         helper.getMyAccount().credit(amount);
     }
-    @Then("^I should have left with (\\$\\d+\\.\\d+) in my account$")
-    public void iShouldHaveLeftWith$InMyAccount(@Transform(MoneyConverter.class) Money amount) {
+    @Then("^the balance of my account should be (\\$\\d+\\.\\d+)")
+    public void iShouldHaveLeftWith$InMyAccount(@Transform(MoneyConverter.class) Money amount) throws Throwable {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) { e.printStackTrace();
+        }
         Assert.assertEquals(helper.getMyAccount().getBallance(),amount,"Incorrect account balance - ");
     }
 }
