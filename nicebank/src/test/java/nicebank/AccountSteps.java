@@ -17,10 +17,12 @@ public class AccountSteps {
         helper.getMyAccount().credit(amount);
     }
     @Then("^the balance of my account should be (\\$\\d+\\.\\d+)")
-    public void iShouldHaveLeftWith$InMyAccount(@Transform(MoneyConverter.class) Money amount) throws Throwable {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) { e.printStackTrace();
+    public void theBalanceOfMyAccountShouldBe$(@Transform(MoneyConverter.class) Money amount) throws Throwable {
+        int timeoutMilliSecs = 3000;
+        int pollIntervalMilliSecs = 100;
+        while (!helper.getMyAccount().getBallance().equals(amount) && timeoutMilliSecs>0) {
+            Thread.sleep(pollIntervalMilliSecs);
+            timeoutMilliSecs-=pollIntervalMilliSecs;
         }
         Assert.assertEquals(helper.getMyAccount().getBallance(),amount,"Incorrect account balance - ");
     }

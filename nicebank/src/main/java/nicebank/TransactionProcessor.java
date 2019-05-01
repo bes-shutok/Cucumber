@@ -1,8 +1,11 @@
 package nicebank;
 
-public class TransactionProcessor {
-    private TransactionQueue queue = new TransactionQueue();
-    public void process() {
+import org.apache.log4j.Logger;
+
+public class TransactionProcessor implements Runnable {
+    private  TransactionQueue queue = new TransactionQueue();
+    private static final Logger Log = Logger.getLogger(TransactionProcessor.class);
+    public void run() {
         do {
             String message = queue.read();
 /*            try {
@@ -10,6 +13,7 @@ public class TransactionProcessor {
             } catch (InterruptedException e) {
             }*/
             if (message.length() > 0) {
+                Log.info("Message from queue: " + message);
                 Money balance = BalanceStore.getBalance();
                 Money transactionAmount = new Money(message);
                 if (isCreditTransaction(message)){
@@ -18,7 +22,7 @@ public class TransactionProcessor {
                     BalanceStore.setBalance(balance.minus(transactionAmount));
                 }
             }
-        } while (true);
+        } while (!Thread.currentThread().isInterrupted());
     }
     private boolean isCreditTransaction(String message) {
         return !message.startsWith("-");
