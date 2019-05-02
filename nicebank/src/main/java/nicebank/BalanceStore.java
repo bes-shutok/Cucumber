@@ -1,5 +1,7 @@
 package nicebank;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -7,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class BalanceStore {
+    private static final Logger logger = Logger.getLogger(BalanceStore.class);
     private static String BALANCE_FILE_PATH = "./balance";
 
     public static void clear() {
@@ -25,11 +28,12 @@ public class BalanceStore {
         // Probably need regex here
         Money balance = new Money(scanner.nextLine());
         scanner.close();
+        logger.info("Balance: " + balance.toString());
 
         return balance;
     }
 
-    public static void setBalance(Money newBalance){
+    public static void setBalance(Money newBalance) {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(BALANCE_FILE_PATH, "UTF-8");
@@ -39,6 +43,8 @@ public class BalanceStore {
             e.printStackTrace();
         }
         writer.println(newBalance.toString());
+        logger.info("New balance: " + newBalance.toString());
         writer.close();
     }
 }
+

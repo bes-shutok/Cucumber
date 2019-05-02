@@ -10,7 +10,7 @@ public class BackgroundProcessHooks {
         transactionProcessorThread = new Thread() {
             public void run() {
                 TransactionProcessor processor = new TransactionProcessor();
-                processor.run();
+                processor.start();
             }
         };
         transactionProcessorThread.start();

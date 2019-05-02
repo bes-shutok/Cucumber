@@ -18,7 +18,7 @@ public class AccountSteps {
     }
     @Then("^the balance of my account should be (\\$\\d+\\.\\d+)")
     public void theBalanceOfMyAccountShouldBe$(@Transform(MoneyConverter.class) Money amount) throws Throwable {
-        int timeoutMilliSecs = 3000;
+        int timeoutMilliSecs = 500;
         int pollIntervalMilliSecs = 100;
         while (!helper.getMyAccount().getBallance().equals(amount) && timeoutMilliSecs>0) {
             Thread.sleep(pollIntervalMilliSecs);
