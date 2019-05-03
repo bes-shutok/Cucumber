@@ -5,13 +5,13 @@ import org.apache.log4j.Logger;
 public class TransactionProcessor {
     private  TransactionQueue queue = new TransactionQueue();
     private static final Logger logger = Logger.getLogger(TransactionProcessor.class);
-    public void start() {
+    public void start() throws NotEnoughMoney  {
         do {
             String message = queue.read();
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//            }
+            // Simulating flickering scenario
+            try {Thread.sleep(1000);} catch (InterruptedException e) {
+                logger.debug(e.getMessage());
+            }
             if (message.length() > 0) {
                 logger.info("Message from queue: " + message);
                 Money balance = BalanceStore.getBalance();
@@ -19,11 +19,14 @@ public class TransactionProcessor {
                 if (isCreditTransaction(message)){
                     BalanceStore.setBalance(balance.add(transactionAmount));
                 } else {
+                    // Possible Race Condition?
                     if (balance.lessThan(transactionAmount)){
-                        //ideally we should fail scenario here, but for now we just throw exception and interrupt
-                        // the thread. Unfortunately new thread will continue.
                         Thread.currentThread().interrupt();
-                        throw new RuntimeException("Negative balance is not allowed! \n\rTerminating the thread!");
+                        String errorMessage="Negative balance is not allowed! Possible Race Condition?" +
+                                "\nFailed while trying to deduct " + transactionAmount.toString() +
+                                "\nwhen balance = " + balance.toString();
+                        logger.error(errorMessage);
+                        throw new NotEnoughMoney(errorMessage);
                     }
                     BalanceStore.setBalance(balance.minus(transactionAmount));
                 }
