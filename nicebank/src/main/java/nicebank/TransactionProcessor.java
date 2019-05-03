@@ -8,10 +8,10 @@ public class TransactionProcessor {
     public void start() throws NotEnoughMoney  {
         do {
             String message = queue.read();
-            // Simulating flickering scenario
-            try {Thread.sleep(1000);} catch (InterruptedException e) {
+/*            // Simulating flickering scenario
+            try {Thread.sleep(2000);} catch (InterruptedException e) {
                 logger.debug(e.getMessage());
-            }
+            }*/
             if (message.length() > 0) {
                 logger.info("Message from queue: " + message);
                 Money balance = BalanceStore.getBalance();
