@@ -1,12 +1,18 @@
 package hooks;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import nicebank.TransactionQueue;
-import nicebank.BalanceStore;
+import org.javalite.activejdbc.Base;
+
 public class ResetHooks {
     @Before
     public void reset() {
         TransactionQueue.clear();
-        BalanceStore.clear();
+    }
+
+    @After
+    public void rollback() {
+        Base.rollbackTransaction();
     }
 }

@@ -13,8 +13,36 @@
         <jetty.version>9.4.15.v20190215</jetty.version>
         <selenium.version>3.141.59</selenium.version>
         <appacheCommonsIO.version>2.6</appacheCommonsIO.version>
+        <liquibase.version>3.6.3</liquibase.version>
+        <activejdbc.version>2.2</activejdbc.version>
+        <surefire.version>3.0.0-M3</surefire.version>
+        <mysql.version>8.0.16</mysql.version>
+        <slf4j.version>1.7.26</slf4j.version>
     </properties>
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>${slf4j.version}</version>
+<!--            <scope>test</scope>-->
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.javalite/activejdbc -->
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activejdbc</artifactId>
+            <version>${activejdbc.version}</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <dependency>
@@ -22,7 +50,6 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
@@ -70,6 +97,55 @@
             </dependency>
 
         </dependencies>-->
+   <build>
+       <plugins>
+<!--           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>${surefire.version}</version>
+               <configuration>
+                   <argLine>-Duser.language=en</argLine>
+                   <argLine>-Xmx1024m</argLine>
+                   <argLine>-XX:MaxPermSize=256m</argLine>
+                   <argLine>-Dfile.encoding=UTF-8</argLine>
+                   <useFile>false</useFile>
+               </configuration>
+           </plugin>-->
+           <plugin>
+               <groupId>org.javalite</groupId>
+               <artifactId>activejdbc-instrumentation</artifactId>
+               <version>${activejdbc.version}</version>
+               <executions>
+                   <execution>
+                       <phase>process-classes</phase>
+                       <goals>
+                           <goal>instrument</goal>
+                       </goals>
+                   </execution>
+               </executions>
+           </plugin>
+           <plugin>
+               <groupId>org.liquibase</groupId>
+               <artifactId>liquibase-maven-plugin</artifactId>
+               <version>${liquibase.version}</version>
+               <configuration>
+                   <changeLogFile>src/main/resources/bank_schema.xml</changeLogFile>
+                   <driver>com.mysql.jdbc.Driver</driver>
+                   <url>jdbc:mysql://localhost/bank?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</url>
+                   <username>teller</username>
+                   <password>password</password>
+               </configuration>
+               <executions>
+                   <execution>
+                       <phase>process-resources</phase>
+                       <goals>
+                           <goal>update</goal>
+                       </goals>
+                   </execution>
+               </executions>
+           </plugin>
+       </plugins>
+   </build>
 
 
 </project>

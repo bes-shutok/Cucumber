@@ -11,7 +11,7 @@ class WithdrawalServlet extends HttpServlet {
     private CashSlot cashSlot;
     private Money amount;
 
-    WithdrawalServlet(Account account, CashSlot cashSlot){
+    WithdrawalServlet(CashSlot cashSlot, Account account){
         this.account=account;
         this.cashSlot= cashSlot;
     }
@@ -27,7 +27,7 @@ class WithdrawalServlet extends HttpServlet {
 
 
         if (amountString !=null && amountString.equals("getBalance")) {response.getWriter().println(
-                "<html><head><title>ATM</title></head>" + "<body><header><h1>Your balance: " + account.getBallance() + "</h1>" +
+                "<html><head><title>ATM</title></head>" + "<body><header><h1>Your balance: " + account.getBalance() + "</h1>" +
                     // for debugging purpose:
                     // "<br>Request: " + request.toString() + "<br>Request parameters: " + request.getParameterMap().toString() +
                  "</header></body></html>");
@@ -39,7 +39,7 @@ class WithdrawalServlet extends HttpServlet {
         overdraw=!teller.withdrawFrom(account, amount);
         if (overdraw) {response.getWriter().println(
                 "<html><head><title>ATM</title></head>" + "<body><header><h1>You have insufficient funds in your account!<br>" +
-                        "<br> Your account has " + account.getBallance() + " and you tried to withdraw " + amount + "</h1>" +
+                        "<br> Your account has " + account.getBalance() + " and you tried to withdraw " + amount + "</h1>" +
                         // for debugging purpose:
                         // "<br>Request: " + request.toString() + "<br>Request parameters: " + request.getParameterMap().toString() +
                         "</header></body></html>");

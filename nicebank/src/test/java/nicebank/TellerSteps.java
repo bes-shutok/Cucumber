@@ -22,7 +22,7 @@ public class TellerSteps {
 
     @Then("^I should see that my balance is (\\$\\d+\\.\\d+)$")
     public void iShouldSeeThatMyBalanceIs$(@Transform(MoneyConverter.class) Money amount) {
-        Assert.assertEquals(helper.getMyAccount().getBallance(),amount,"Incorrect account balance - ");
+        Assert.assertEquals(helper.getMyAccount().getBalance(),amount,"Incorrect account balance - ");
         Assert.assertEquals(helper.getTeller().checkState(), TellerWithState.Status.DISPLAY, "Display balance check failure");
     }
 

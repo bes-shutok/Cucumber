@@ -2,6 +2,7 @@ package support;
 
 import nicebank.Account;
 import nicebank.CashSlot;
+import org.javalite.activejdbc.Base;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
@@ -10,6 +11,20 @@ public class KnowsTheDomain {
     private CashSlot cashSlot;
     private TellerWithState teller;
     private EventFiringWebDriver webDriver;
+
+    public KnowsTheDomain() {
+        if (!Base.hasConnection()){
+            Base.open(
+                    "com.mysql.cj.jdbc.Driver",
+                    "jdbc:mysql://localhost/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "teller", "password");
+            try {
+                Base.connection().setAutoCommit(false);
+            } catch (Exception se){
+                // Ignore
+            }
+        }
+    }
 
     public EventFiringWebDriver getWebDriver() {
         if (webDriver == null) {
@@ -26,7 +41,10 @@ public class KnowsTheDomain {
     }
 
     public Account getMyAccount() {
-        if (myAccount == null) {myAccount = new Account();}
+        if (myAccount == null) {
+            myAccount = new Account(1234);
+            myAccount.saveIt();
+        }
         return myAccount;
     }
 
