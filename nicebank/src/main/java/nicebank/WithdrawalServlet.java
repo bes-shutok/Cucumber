@@ -1,5 +1,8 @@
 package nicebank;
 
+import org.apache.log4j.Logger;
+import org.javalite.activejdbc.Base;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +13,7 @@ class WithdrawalServlet extends HttpServlet {
     private Account account;
     private CashSlot cashSlot;
     private Money amount;
+    private static final Logger logger = Logger.getLogger(WithdrawalServlet.class);
 
     WithdrawalServlet(CashSlot cashSlot, Account account){
         this.account=account;
@@ -17,6 +21,14 @@ class WithdrawalServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (!Base.hasConnection()){
+            logger.info("WithdrawalServlet initializing DB connection");
+            Base.open(
+                    "com.mysql.cj.jdbc.Driver",
+                    "jdbc:mysql://localhost/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "teller", "password");
+        }
+        logger.info("Starting doPost of WithdrawalServlet");
         boolean overdraw;
         String amountString;
         Teller teller = new AutomatedTeller(cashSlot);

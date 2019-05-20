@@ -12,9 +12,10 @@ public class CashSlotSteps {
         this.helper = helper;
     }
 
+    // FAILURE
     @Then("^(\\$\\d+\\.\\d+) should be dispensed$")
     public void $ShouldBeDispensed(@Transform(MoneyConverter.class) Money amount) {
-        Assert.assertEquals(helper.getCashSlot().getContents(),amount,"Incorrect account balance - ");
+        Assert.assertEquals(helper.getCashSlot().getContents(),amount,"Incorrect CashSlot content - ");
     }
 
     @Then("^nothing should be dispensed$")

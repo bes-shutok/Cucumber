@@ -7,8 +7,10 @@ import support.KnowsTheDomain;
 
 public class ServerHooks {
     public static final int PORT = 8887;
+
     private AtmServer server;
     private KnowsTheDomain helper;
+
     public ServerHooks (KnowsTheDomain helper) {
         this.helper = helper;
     }

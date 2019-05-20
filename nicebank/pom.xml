@@ -130,7 +130,7 @@
                <version>${liquibase.version}</version>
                <configuration>
                    <changeLogFile>src/main/resources/bank_schema.xml</changeLogFile>
-                   <driver>com.mysql.jdbc.Driver</driver>
+                   <driver>com.mysql.cj.jdbc.Driver</driver>
                    <url>jdbc:mysql://localhost/bank?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</url>
                    <username>teller</username>
                    <password>password</password>

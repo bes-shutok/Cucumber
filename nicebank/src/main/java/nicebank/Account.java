@@ -18,6 +18,7 @@ public class Account extends Model {
         queue.write("+" + amount.toString() + ", " + getNumber());
     }
     public void debit(Money amount) throws NotEnoughMoney {
+        // We need to open connection to DB in WithdrawalServlet if we want to do that in Account class
         if (getBalance().lessThan(amount)) {
             throw new NotEnoughMoney();
         }

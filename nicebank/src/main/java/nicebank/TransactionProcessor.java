@@ -9,6 +9,7 @@ public class TransactionProcessor {
     public void start() throws NotEnoughMoney  {
         do {
             if (!Base.hasConnection()){
+                logger.info("Trying to establish connection in TransactionProcessor");
                 Base.open(
                         "com.mysql.cj.jdbc.Driver",
                         "jdbc:mysql://localhost/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
@@ -31,7 +32,9 @@ public class TransactionProcessor {
                 Money balance = account.getBalance();
                 logger.info("Balance: " + balance.toString());
                 if (isCreditTransaction(message)){
-                    account.setBalance(balance.add(transactionAmount));
+                    balance=balance.add(transactionAmount);
+                    logger.info("Is a credit transaction. New balance will be set to: " + balance.toString());
+                    account.setBalance(balance);
                 } else {
                     // Possible Race Condition?
                     if (balance.lessThan(transactionAmount)){
@@ -42,7 +45,9 @@ public class TransactionProcessor {
                         logger.error(errorMessage);
                         throw new NotEnoughMoney(errorMessage);
                     }
-                    account.setBalance(balance.minus(transactionAmount));
+                    balance=balance.minus(transactionAmount);
+                    logger.info("Is a debit transaction. New balance will be set to: " + balance.toString());
+                    account.setBalance(balance);
                 }
             }
         } while (!Thread.currentThread().isInterrupted());

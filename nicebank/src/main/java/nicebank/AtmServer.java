@@ -1,8 +1,9 @@
 package nicebank;
-import org.javalite.activejdbc.Base;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+
 public class AtmServer
 {
     private final Server server;
@@ -15,13 +16,13 @@ public class AtmServer
         context.addServlet(new ServletHolder(new WithdrawalServlet(cashSlot, account)),"/withdraw");
         context.addServlet(new ServletHolder(new AtmServlet()),"/");
     }
-    public static void main(String[] args) throws Exception {
-        Base.open(
-                "com.mysql.cj.jdbc.Driver",
-                "jdbc:mysql://localhost/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-                "teller", "password");
-        new AtmServer(9988, new CashSlot(), new Account()).start();
-    }
+//    public static void main(String[] args) throws Exception {
+//        Base.open(
+//                "com.mysql.cj.jdbc.Driver",
+//                "jdbc:mysql://localhost/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+//                "teller", "password");
+//        new AtmServer(9988, new CashSlot(), new Account()).start();
+//    }
     public void start() throws Exception {
         server.start();
         System.out.println("Listening on " + server.getURI());
