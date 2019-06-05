@@ -3,17 +3,16 @@ package support;
 import nicebank.Account;
 import nicebank.Money;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.Assert;
 
 import static hooks.ServerHooks.PORT;
 
-class AtmUserInterface implements TellerWithState {
+public class AtmUserInterface implements TellerWithState {
 
-    private final EventFiringWebDriver webDriver;
+    private final MyWebDriver webDriver;
     private Status status= Status.WITHDRAW;
 
-    AtmUserInterface(MyWebDriver webDriver){
+    public AtmUserInterface(MyWebDriver webDriver){
         this.webDriver = webDriver;
     }
     public boolean withdrawFrom(Account account, Money amount) {
