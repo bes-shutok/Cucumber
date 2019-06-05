@@ -13,16 +13,16 @@ class AtmUserInterface implements TellerWithState {
     private final EventFiringWebDriver webDriver;
     private Status status= Status.WITHDRAW;
 
-    AtmUserInterface(EventFiringWebDriver webDriver){
+    AtmUserInterface(MyWebDriver webDriver){
         this.webDriver = webDriver;
     }
     public boolean withdrawFrom(Account account, Money amount) {
             webDriver.get("http://localhost:" + PORT);
-            if (amount.equals(new Money("10.00"))) {
+            if (amount.equals(new Money("$10.00"))) {
                 webDriver.findElement(By.id("withdraw10")).click();
                 return true;
             }
-            if (amount.equals(new Money("20.00"))) {
+            if (amount.equals(new Money("$20.00"))) {
                 webDriver.findElement(By.id("withdraw20")).click();
                 return true;
             }
