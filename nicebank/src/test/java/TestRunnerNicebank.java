@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
         snippets= SnippetType.CAMELCASE
         // , tags = {"@NewFeatures"}
         //,features={"src/test/resources"}, glue={"fruit"}
-        //, tags={"@SmokeTests"}
+        , tags={"@SmokeTests"}
 )
 @Test
 public class TestRunnerNicebank extends AbstractTestNGCucumberTests {
