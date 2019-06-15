@@ -1,10 +1,12 @@
 package nicebank;
 
-import org.apache.log4j.Logger;
+
 import org.javalite.activejdbc.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Account extends Model {
-    private static final Logger logger = Logger.getLogger(Account.class);
+    private static final Logger logger = LoggerFactory.getLogger(Account.class);
     private TransactionQueue queue =  new TransactionQueue();
 
     public Account() {}

@@ -1,11 +1,13 @@
 package nicebank;
 
-import org.apache.log4j.Logger;
+
 import org.javalite.activejdbc.Base;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TransactionProcessor {
     private  TransactionQueue queue = new TransactionQueue();
-    private static final Logger logger = Logger.getLogger(TransactionProcessor.class);
+    private static final Logger logger = LoggerFactory.getLogger(TransactionProcessor.class);
     public void start() throws NotEnoughMoney  {
         do {
             if (!Base.hasConnection()){

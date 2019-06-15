@@ -1,7 +1,8 @@
 package nicebank;
 
-import org.apache.log4j.Logger;
 import org.javalite.activejdbc.Base;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ class WithdrawalServlet extends HttpServlet {
     private Account account;
     private CashSlot cashSlot;
     private Money amount;
-    private static final Logger logger = Logger.getLogger(WithdrawalServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(WithdrawalServlet.class);
 
     WithdrawalServlet(CashSlot cashSlot, Account account){
         this.account=account;

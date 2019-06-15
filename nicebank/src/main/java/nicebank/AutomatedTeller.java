@@ -1,10 +1,11 @@
 package nicebank;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AutomatedTeller implements Teller {
     private CashSlot cashSlot;
-    private static final Logger logger = Logger.getLogger(AutomatedTeller.class);
+    private static final Logger logger = LoggerFactory.getLogger(AutomatedTeller.class);
 
     public AutomatedTeller(CashSlot cashSlot) {this.cashSlot=cashSlot;}
     public boolean withdrawFrom(Account account, Money amount) {
