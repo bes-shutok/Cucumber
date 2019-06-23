@@ -3,7 +3,11 @@ package support;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("cucumber-glue")
 public class MyWebDriver extends EventFiringWebDriver {
     private static final Logger logger = Logger.getLogger(MyWebDriver.class);
     public MyWebDriver() {

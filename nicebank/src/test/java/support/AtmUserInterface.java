@@ -3,10 +3,14 @@ package support;
 import nicebank.Account;
 import nicebank.Money;
 import org.openqa.selenium.By;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.testng.Assert;
 
 import static hooks.ServerHooks.PORT;
 
+@Component
+@Scope("cucumber-glue")
 public class AtmUserInterface implements TellerWithState {
 
     private final MyWebDriver webDriver;
