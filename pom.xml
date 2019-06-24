@@ -18,18 +18,18 @@
 <!--        <picocontainer.version>2.14.2</picocontainer.version>-->
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.cucumber/cucumber-java &ndash;&gt;
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/info.cukes/cucumber-testng &ndash;&gt;
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
-        </dependency>
+        </dependency>-->
 <!--        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>

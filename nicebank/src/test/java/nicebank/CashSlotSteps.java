@@ -2,14 +2,13 @@ package nicebank;
 
 import cucumber.api.Transform;
 import cucumber.api.java.en.Then;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import transforms.MoneyConverter;
 
 public class CashSlotSteps {
+    @Autowired
     private CashSlot cashSlot;
-    public CashSlotSteps(CashSlot cashSlot) {
-        this.cashSlot = cashSlot;
-    }
 
     // FAILURE
     @Then("^(\\$\\d+\\.\\d+) should be dispensed$")

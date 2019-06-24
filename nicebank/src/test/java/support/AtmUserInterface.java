@@ -3,19 +3,18 @@ package support;
 import nicebank.Account;
 import nicebank.Money;
 import org.openqa.selenium.By;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
 import static hooks.ServerHooks.PORT;
 
-@Component
-@Scope("cucumber-glue")
 public class AtmUserInterface implements TellerWithState {
 
-    private final MyWebDriver webDriver;
+    private final EventFiringWebDriver webDriver;
     private Status status= Status.WITHDRAW;
 
+    @Autowired
     public AtmUserInterface(MyWebDriver webDriver){
         this.webDriver = webDriver;
     }
