@@ -9,7 +9,11 @@
     <context:annotation-config/>
     <context:component-scan base-package="hooks, nicebank, support" />
     <bean class="support.AtmUserInterface" scope="cucumber-glue"/>
-    <bean class="support.MyWebDriver" scope="cucumber-glue"/>
     <bean class="nicebank.CashSlot" scope="cucumber-glue"/>
     <bean class="support.AccountFactory" factory-method="createTestAccount" lazy-init="true" scope="cucumber-glue"/>
+    <bean class="org.openqa.selenium.support.events.EventFiringWebDriver" scope="cucumber-glue" destroy-method="close">
+    <constructor-arg>
+        <bean class="org.openqa.selenium.chrome.ChromeDriver" scope="cucumber-glue"/>
+    </constructor-arg>
+    </bean>
 </beans>

@@ -11,13 +11,10 @@ import static hooks.ServerHooks.PORT;
 
 public class AtmUserInterface implements TellerWithState {
 
-    private final EventFiringWebDriver webDriver;
+    @Autowired
+    private EventFiringWebDriver webDriver;
     private Status status= Status.WITHDRAW;
 
-    @Autowired
-    public AtmUserInterface(MyWebDriver webDriver){
-        this.webDriver = webDriver;
-    }
     public boolean withdrawFrom(Account account, Money amount) {
             webDriver.get("http://localhost:" + PORT);
             if (amount.equals(new Money("$10.00"))) {
