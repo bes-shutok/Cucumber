@@ -12,7 +12,7 @@
     <properties>
         <cucumber.version>2.4.0</cucumber.version>
         <spring.version>4.3.16.RELEASE</spring.version>
-        <jetty.version>9.4.15.v20190215</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
         <selenium.version>3.141.59</selenium.version>
         <appacheCommonsIO.version>2.6</appacheCommonsIO.version>
         <liquibase.version>3.6.3</liquibase.version>
