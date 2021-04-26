@@ -14,7 +14,7 @@
         <spring.version>4.3.16.RELEASE</spring.version>
         <jetty.version>9.4.15.v20190215</jetty.version>
         <selenium.version>3.141.59</selenium.version>
-        <appacheCommonsIO.version>2.6</appacheCommonsIO.version>
+        <appacheCommonsIO.version>2.7</appacheCommonsIO.version>
         <liquibase.version>3.6.3</liquibase.version>
         <activejdbc.version>2.2</activejdbc.version>
         <surefire.version>3.0.0-M3</surefire.version>
