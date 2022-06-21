@@ -18,7 +18,7 @@
         <liquibase.version>3.6.3</liquibase.version>
         <activejdbc.version>2.2</activejdbc.version>
         <surefire.version>3.0.0-M3</surefire.version>
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <slf4j.version>1.7.26</slf4j.version>
     </properties>
 
